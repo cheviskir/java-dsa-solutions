@@ -3,16 +3,28 @@ class Solutions{
 		int size = nums1.length + nums2.length;
 		int [] combnums = new int [size];
 		int index = 0;
-		for(int i = 0; i < nums1.length; i++){
-			for(int j=0; j < nums2.length; j++){
-				if(nums1[i] < nums2[j]){
-					combnums[index] = nums1[i];
-					index+=1;
-				}if(nums2[j] < nums1[i]){
-					combnums[index] = nums2[j];
-					index +=1;
-				}
+		int i = 0, j = 0;
+
+		while (i < nums1.length && j < nums2.length) {
+			if (nums1[i] < nums2 [j]) {
+				combnums[index] = nums1[i];
+				index +=1;
+				i++;
+			}else{
+				combnums[index] = nums2[j];
+				index+=1;
+				j++;
 			}
+		}
+		while (i < nums1.length) { 
+    		combnums[index] = nums1[i]; 
+    		i++; 
+    		index++; 
+		}
+		while (j < nums2.length) { 
+    		combnums[index] = nums2[j]; 
+    		j++; 
+    		index++; 
 		}
 		return combnums;
 	}
